@@ -10,13 +10,16 @@ import java.util.stream.Collectors;
  */
 public class StreamDemoMain {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
-        List<Integer> list = numbers.parallelStream()
-                .filter(i -> i > 3)
+        List<Integer> numbers = Arrays.asList(13, 3, -2, 2, -13, 7, 3, 5, 8, -1);
+        List<Integer> list = numbers.stream()
+                .filter(i -> i > 0)
                 .distinct()
-                .map(integer -> integer * integer)
                 .sorted(Integer::compareTo)
+                .map(integer -> {
+                    int ii = integer * integer;
+                    System.out.println(integer + " 的平方为: " + ii);
+                    return ii;
+                })
                 .collect(Collectors.toList());
-        list.forEach(System.out::println);
     }
 }
