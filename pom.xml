@@ -12,6 +12,8 @@
         <module>lambdaDemo</module>
         <module>StreamDemo</module>
         <module>FunctionalInterfacesDemo</module>
+        <module>方法引用</module>
+        <module>构造器引用</module>
     </modules>
 
     <build>

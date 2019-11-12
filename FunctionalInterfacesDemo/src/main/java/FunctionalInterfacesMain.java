@@ -60,7 +60,7 @@ public class FunctionalInterfacesMain {
     // 需求：处理字符串
     @Test
     public void test3() {
-        String newStr = strHandler("\t\t\t Hello world   ", str -> str.trim());
+        String newStr = strHandler("\t\t\t Hello world   ", String::trim);
         System.out.println(newStr);
     }
     private String strHandler(String str, Function<String, String> function) {
