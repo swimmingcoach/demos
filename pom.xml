@@ -11,6 +11,7 @@
     <modules>
         <module>lambdaDemo</module>
         <module>StreamDemo</module>
+        <module>FunctionalInterfacesDemo</module>
     </modules>
 
     <build>
