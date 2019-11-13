@@ -15,6 +15,7 @@
         <module>方法引用</module>
         <module>构造器引用</module>
         <module>pojo</module>
+        <module>OptionalDemo</module>
     </modules>
 
     <build>

@@ -1,9 +1,6 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,6 +11,12 @@ import java.util.stream.Stream;
  * @date : 2019/11/11 15:57
  */
 public class StreamDemoMain {
+    List<Student> students = Arrays.asList(new Student("张三", "上海", 21),
+            new Student("李四", "郑州", 18),
+            new Student("王五", "银川", 22),
+            new Student("孙六", "南阳", 17),
+            new Student("孙六", "南阳", 17));
+
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(13, 3, -2, 2, -13, 7, 3, 5, 8, -1);
         List<Integer> list = numbers.stream()
@@ -112,5 +115,47 @@ public class StreamDemoMain {
             list.add(character);
         }
         return list.stream();
+    }
+
+    /*
+     * 排序
+     *      自然排序：comparable
+     *      定制排序：comparator
+     **/
+    @Test
+    public void test4() {
+        List<String> list = Arrays.asList("aa", "bb", "cc", "dd", "asdwqed");
+        list.stream()
+                .sorted()
+                .forEach(System.out::println);
+
+        list.stream()
+                .sorted((s1, s2) -> {
+                    return s1.length() - s2.length();
+                })
+                .forEach(System.out::println);
+    }
+
+    /*
+     * 终止操作
+     *      allMatch
+     *      anyMatch
+     *      noneMatch
+     *      findFirst
+     *      findAny
+     *      count
+     *      min
+     *      max
+     **/
+    @Test
+    public void test5() {
+        System.out.println("allMatch: " + students.stream().allMatch(student -> student.getAge() > 20));
+        System.out.println("anyMatch: " + students.stream().anyMatch(student -> student.getAge() > 20));
+        System.out.println("noneMatch: " + students.stream().noneMatch(student -> student.getAge() > 20));
+
+        Optional<Student> stu = students.parallelStream()
+                .filter(student -> student.getAge() > 20)
+                .findAny();
+        System.out.println(stu.get());
     }
 }

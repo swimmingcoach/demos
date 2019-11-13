@@ -1,3 +1,4 @@
+import com.sun.istack.internal.NotNull;
 import lombok.Data;
 
 /**
@@ -8,6 +9,8 @@ import lombok.Data;
  */
 @Data
 public class Student {
+    @NotNull
+    private Integer uid;
     private String name;
     private String area;
     private Integer age;
@@ -15,7 +18,8 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, String area, Integer age) {
+    public Student(Integer uid, String name, String area, Integer age) {
+        this.uid = uid;
         this.name = name;
         this.area = area;
         this.age = age;
