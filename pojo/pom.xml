@@ -9,19 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lambdaDemo</artifactId>
-
+    <artifactId>pojo</artifactId>
     <dependencies>
         <dependency>
-            <groupId>cn.zealot</groupId>
-            <artifactId>pojo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.62</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
+
 
 </project>
