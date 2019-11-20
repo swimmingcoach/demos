@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zealot.dao.TestMapper">
+    <!-- LRU – 最近最少使用：移除最长时间不被使用的对象。
+        FIFO – 先进先出：按对象进入缓存的顺序来移除它们。
+        SOFT – 软引用：基于垃圾回收器状态和软引用规则移除对象。
+        WEAK – 弱引用：更积极地基于垃圾收集器状态和弱引用规则移除对象。
+        默认的清除策略是 LRU。 -->
+    <!-- readOnly（只读）属性可以被设置为 true 或 false。
+            只读的缓存会给所有调用者返回缓存对象的相同实例。
+            因此这些对象不能被修改。这就提供了可观的性能提升。
+            而可读写的缓存会（通过序列化）返回缓存对象的拷贝。
+            速度上会慢一些，但是更安全，因此默认值是 false。 -->
+    <cache
+            eviction="FIFO"
+            flushInterval="60000"
+            size="512"
+            readOnly="true"/>
+
+    <select id="selectStudent" resultType="Student" useCache="false">
+        select * from tb_student where uid = #{uid}
+    </select>
+
+    <select id="selectAll" resultType="Student" useCache="true">
+        SELECT * FROM tb_student
+    </select>
+
+    <update id="updateStudentNameByUid">
+        UPDATE tb_student SET `name` = #{name} WHERE `uid` = #{uid}
+    </update>
+</mapper>

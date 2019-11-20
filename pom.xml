@@ -16,6 +16,9 @@
         <module>构造器引用</module>
         <module>pojo</module>
         <module>OptionalDemo</module>
+        <module>ArrayListDemo</module>
+        <module>SpringTransactionalDemo</module>
+        <module>mybatisDemo</module>
     </modules>
 
     <build>

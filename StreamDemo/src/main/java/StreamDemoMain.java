@@ -1,3 +1,5 @@
+import cn.zealot.SaiTouEnum;
+import cn.zealot.Student;
 import org.junit.Test;
 
 import java.util.*;
@@ -11,11 +13,11 @@ import java.util.stream.Stream;
  * @date : 2019/11/11 15:57
  */
 public class StreamDemoMain {
-    List<Student> students = Arrays.asList(new Student("张三", "上海", 21),
-            new Student("李四", "郑州", 18),
-            new Student("王五", "银川", 22),
-            new Student("孙六", "南阳", 17),
-            new Student("孙六", "南阳", 17));
+    List<Student> students = Arrays.asList(new Student(3,"张三", "上海", 21),
+            new Student(4,"李四", "郑州", 18),
+            new Student(5,"王五", "银川", 22),
+            new Student(6,"孙六", "南阳", 17),
+            new Student(6,"孙六", "南阳", 17));
 
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(13, 3, -2, 2, -13, 7, 3, 5, 8, -1);

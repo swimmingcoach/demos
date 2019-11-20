@@ -1,3 +1,5 @@
+import cn.zealot.Student;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +12,11 @@ import java.util.List;
 public class LambdaDemoMain {
     public static void main(String[] args) {
         List<Student> list = new ArrayList<>();
-        list.add(new Student("张三", "苏州", 23));
-        list.add(new Student("张四", "洛阳", 22));
-        list.add(new Student("张五", "姬昌", 25));
-        list.add(new Student("张六", "常州", 21));
-        list.add(new Student("张七", "佛山", 27));
+        list.add(new Student(1,"张三", "苏州", 23));
+        list.add(new Student(2,"张四", "洛阳", 22));
+        list.add(new Student(3,"张五", "姬昌", 25));
+        list.add(new Student(4,"张六", "常州", 21));
+        list.add(new Student(5,"张七", "佛山", 27));
 
         /**
          * 1、什么是Lambda表达式
@@ -24,11 +26,11 @@ public class LambdaDemoMain {
          * 基本语法:  (parameters) -> expression
          *    或者：(parameters) ->{ statements;
          **/
-//        List<Student> __suzhous = filterStudent(list, (Student student) -> {
+//        List<cn.zealot.Student> __suzhous = filterStudent(list, (cn.zealot.Student student) -> {
 //            String suzhou = "苏州";
 //            return suzhou.equals(student.getArea());
 //        });
-//        __suzhous.forEach((Student student) -> {
+//        __suzhous.forEach((cn.zealot.Student student) -> {
 //            System.out.println(student);
 //        });
 

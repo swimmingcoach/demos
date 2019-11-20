@@ -1,5 +1,9 @@
-import com.sun.istack.internal.NotNull;
+package cn.zealot;
+
 import lombok.Data;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * All right Reserved, Designed By ZHANGSEN
@@ -8,12 +12,12 @@ import lombok.Data;
  * @date : 2019/11/12 16:00
  */
 @Data
-public class Student {
-    @NotNull
+public class Student implements Serializable {
     private Integer uid;
     private String name;
     private String area;
     private Integer age;
+    private Date createtime;
 
     public Student() {
     }
