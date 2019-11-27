@@ -2,10 +2,9 @@ package cn.zealot.redissondemo.mapper;
 
 import cn.zealot.pojo.Student;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -15,8 +14,6 @@ import java.util.List;
  * @author : zhangsen
  * @date : 2019/11/18 16:20
  */
-@Repository
-@Mapper
 public interface StudentMapper {
 
     @Select("select * from tb_student")
@@ -25,5 +22,8 @@ public interface StudentMapper {
     @Insert("insert into tb_student(`name`, `area`, `age`) values (#{name}, #{area}, #{age})")
     @Options(keyProperty = "id" , useGeneratedKeys = true)
     void insert(Student record);
+
+    @Update("update tb_student set `name` = #{name}, `area` = #{area}, `age` = #{age} where `uid` = #{uid}")
+    Integer update(Student record);
 
 }

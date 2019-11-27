@@ -2,6 +2,7 @@ package cn.zealot.redissondemo.controller;
 
 import cn.zealot.pojo.Student;
 import cn.zealot.redissondemo.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.util.List;
  * @date : 2019/11/18 16:55
  */
 @Controller
+@Slf4j
 public class StudentControl {
 
     @Autowired
@@ -47,23 +49,46 @@ public class StudentControl {
 
     @GetMapping("/test/redis/get")
     @ResponseBody
-    public String getFromRedis() {
-        RBucket<String> keyObj = redissonClient.getBucket("test");
-        String s = keyObj.get();
+    public Student getFromRedis() {
+        RBucket<Student> keyObj = redissonClient.getBucket("test");
+        if (!keyObj.isExists()) {
+            return null;
+        }
+        Student s = keyObj.get();
         return s;
+    }
+
+    @GetMapping("/test/update")
+    @ResponseBody
+    public void update() throws InterruptedException {
+        Student record = new Student();
+        record.setUid(2);
+        record.setName("name");
+        record.setArea("area");
+        record.setAge(0);
+        studentService.update(record);
     }
 
     @GetMapping("/test/redis/set/{name}/{area}/{age}")
     @ResponseBody
-    public Boolean setFromRedis(@PathVariable String name,
+    public Boolean setIntoRedis(@PathVariable String name,
                                 @PathVariable String area,
                                 @PathVariable Integer age) {
         Student record = new Student();
         record.setName(name);
         record.setArea(area);
         record.setAge(age);
-        RBucket<String> keyObj = redissonClient.getBucket("test");
-        keyObj.set(record.toString());
+        RBucket<Student> keyObj = redissonClient.getBucket("test");
+        keyObj.set(record);
         return true;
     }
+
+    @GetMapping("/test/redis/set/{key}/{value}")
+    @ResponseBody
+    public Boolean setIntoRedis1(@PathVariable String key,
+                                @PathVariable String value) {
+        RBucket<String> keyObj = redissonClient.getBucket(key);
+        return keyObj.trySet(value);
+    }
+
 }
