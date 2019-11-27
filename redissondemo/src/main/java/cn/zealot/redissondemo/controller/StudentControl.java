@@ -1,13 +1,14 @@
-package cn.zealot.controller;
+package cn.zealot.redissondemo.controller;
 
-import cn.zealot.Student;
-import cn.zealot.service.StudentService;
+import cn.zealot.pojo.Student;
+import cn.zealot.redissondemo.service.StudentService;
+import org.redisson.api.RBucket;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-import redis.clients.jedis.JedisCluster;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class StudentControl {
     private StudentService studentService;
 
     @Autowired
-    private JedisCluster jedisCluster;
+    private RedissonClient redissonClient;
 
     @GetMapping("/test/getAll")
     @ResponseBody
@@ -47,7 +48,8 @@ public class StudentControl {
     @GetMapping("/test/redis/get")
     @ResponseBody
     public String getFromRedis() {
-        String s = jedisCluster.get("test");
+        RBucket<String> keyObj = redissonClient.getBucket("test");
+        String s = keyObj.get();
         return s;
     }
 
@@ -60,7 +62,8 @@ public class StudentControl {
         record.setName(name);
         record.setArea(area);
         record.setAge(age);
-        jedisCluster.set("test", record.toString());
+        RBucket<String> keyObj = redissonClient.getBucket("test");
+        keyObj.set(record.toString());
         return true;
     }
 }

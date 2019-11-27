@@ -21,7 +21,7 @@
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
     </settings>
     <typeAliases>
-        <typeAlias alias="Student" type="cn.zealot.Student"/>
+        <typeAlias alias="Student" type="cn.zealot.pojo.Student"/>
     </typeAliases>
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="java.math.RoundingMode"/>

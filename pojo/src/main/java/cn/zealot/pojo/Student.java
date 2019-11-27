@@ -1,4 +1,4 @@
-package cn.zealot;
+package cn.zealot.pojo;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

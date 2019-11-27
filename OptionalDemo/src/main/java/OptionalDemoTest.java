@@ -1,4 +1,4 @@
-import cn.zealot.Student;
+import cn.zealot.pojo.Student;
 import org.junit.Test;
 
 import java.util.Optional;

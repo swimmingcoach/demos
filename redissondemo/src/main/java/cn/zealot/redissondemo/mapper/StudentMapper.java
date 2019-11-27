@@ -1,6 +1,6 @@
-package cn.zealot.mapper;
+package cn.zealot.redissondemo.mapper;
 
-import cn.zealot.Student;
+import cn.zealot.pojo.Student;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;

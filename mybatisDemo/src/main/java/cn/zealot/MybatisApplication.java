@@ -1,6 +1,7 @@
 package cn.zealot;
 
 import cn.zealot.dao.TestMapper;
+import cn.zealot.pojo.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

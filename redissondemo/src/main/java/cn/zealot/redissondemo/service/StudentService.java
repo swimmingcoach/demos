@@ -1,7 +1,7 @@
-package cn.zealot.service;
+package cn.zealot.redissondemo.service;
 
-import cn.zealot.Student;
-import cn.zealot.mapper.StudentMapper;
+import cn.zealot.pojo.Student;
+import cn.zealot.redissondemo.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
