@@ -19,6 +19,7 @@
         <module>ArrayListDemo</module>
         <module>SpringTransactionalDemo</module>
         <module>mybatisDemo</module>
+        <module>PythonDemo</module>
     </modules>
 
     <build>

@@ -1,6 +1,7 @@
 package cn.zealot;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,6 +18,8 @@ public class Student implements Serializable {
     private String name;
     private String area;
     private Integer age;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date createtime;
 
     public Student() {

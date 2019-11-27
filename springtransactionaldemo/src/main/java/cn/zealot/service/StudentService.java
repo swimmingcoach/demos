@@ -1,7 +1,7 @@
-package cn.zealot.springtransactionaldemo.service;
+package cn.zealot.service;
 
-import cn.zealot.springtransactionaldemo.mapper.TestMapper;
-import cn.zealot.springtransactionaldemo.pojo.TestModel;
+import cn.zealot.Student;
+import cn.zealot.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,24 +15,24 @@ import java.util.List;
  * @date : 2019/11/18 16:53
  */
 @Service
-public class TestService {
+public class StudentService {
 
     @Autowired
-    private TestMapper testMapper;
+    private StudentMapper studentMapper;
 
-    public List<TestModel> getAll() {
-        return testMapper.getAll();
+    public List<Student> getAll() {
+        return studentMapper.getAll();
     }
 
     @Transactional
-    public TestModel insert(TestModel record) {
-        testMapper.insert(record);
+    public Student insert(Student record) {
+        studentMapper.insert(record);
         return ins(record);
     }
 
     @Transactional
-    public TestModel ins(TestModel record) {
-        if (record.getId() % 2 == 0) {
+    public Student ins(Student record) {
+        if (record.getUid() % 2 == 0) {
             throw new RuntimeException();
         }
 

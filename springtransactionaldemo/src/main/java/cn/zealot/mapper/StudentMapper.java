@@ -1,6 +1,6 @@
-package cn.zealot.springtransactionaldemo.mapper;
+package cn.zealot.mapper;
 
-import cn.zealot.springtransactionaldemo.pojo.TestModel;
+import cn.zealot.Student;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -17,16 +17,13 @@ import java.util.List;
  */
 @Repository
 @Mapper
-public interface TestMapper {
+public interface StudentMapper {
 
-    @Select("select * from tb_test")
-    List<TestModel> getAll();
+    @Select("select * from tb_student")
+    List<Student> getAll();
 
-    @Select("select * from tb_test")
-    TestModel getAll(Integer id);
-
-    @Insert("insert into tb_test(`name`, `desc`) values (#{name}, #{desc})")
+    @Insert("insert into tb_student(`name`, `area`, `age`) values (#{name}, #{area}, #{age})")
     @Options(keyProperty = "id" , useGeneratedKeys = true)
-    void insert(TestModel record);
+    void insert(Student record);
 
 }

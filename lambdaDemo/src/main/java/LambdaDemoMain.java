@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class LambdaDemoMain {
     public static void main(String[] args) {
+
         List<Student> list = new ArrayList<>();
         list.add(new Student(1,"张三", "苏州", 23));
         list.add(new Student(2,"张四", "洛阳", 22));
