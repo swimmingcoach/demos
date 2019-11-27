@@ -1,7 +1,7 @@
 package cn.zealot.redissondemo.service;
 
 import cn.zealot.pojo.Student;
-import cn.zealot.redissondemo.aop.RLock;
+import cn.zealot.redissondemo.aop.RedisLock;
 import cn.zealot.redissondemo.mapper.StudentMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
@@ -40,8 +40,19 @@ public class StudentService {
 
     @Transactional
     @Async
-    @RLock("studentUpdate")
-    public Student update(Student record) throws InterruptedException {
+    @RedisLock("studentUpdate1")
+    public Student update1(Student record) throws InterruptedException {
+        log.debug("IN");
+        Thread.sleep(10000);
+        studentMapper.update(record);
+        log.debug("OUT");
+        return record;
+    }
+
+    @Transactional
+    @Async
+    @RedisLock("studentUpdate1")
+    public Student update2(Student record) throws InterruptedException {
         log.debug("IN");
         Thread.sleep(10000);
         studentMapper.update(record);

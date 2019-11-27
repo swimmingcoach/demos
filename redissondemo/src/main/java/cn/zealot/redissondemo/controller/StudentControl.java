@@ -58,15 +58,26 @@ public class StudentControl {
         return s;
     }
 
-    @GetMapping("/test/update")
+    @GetMapping("/test/update1")
     @ResponseBody
-    public void update() throws InterruptedException {
+    public void update1() throws InterruptedException {
+        Student record = new Student();
+        record.setUid(1);
+        record.setName("name1");
+        record.setArea("area1");
+        record.setAge(1);
+        studentService.update1(record);
+    }
+
+    @GetMapping("/test/update2")
+    @ResponseBody
+    public void update2() throws InterruptedException {
         Student record = new Student();
         record.setUid(2);
-        record.setName("name");
-        record.setArea("area");
-        record.setAge(0);
-        studentService.update(record);
+        record.setName("name2");
+        record.setArea("area2");
+        record.setAge(2);
+        studentService.update2(record);
     }
 
     @GetMapping("/test/redis/set/{name}/{area}/{age}")
