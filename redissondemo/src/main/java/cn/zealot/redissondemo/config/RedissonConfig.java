@@ -35,8 +35,7 @@ public class RedissonConfig {
 
         String[] cNodes = clusterNodes.split(",");
         for (String node : cNodes) {
-            String[] hp = node.split(":");
-            cf.addNodeAddress("redis://" + hp[0] + ":" + hp[1]);
+            cf.addNodeAddress("redis://" + node);
         }
 
         return Redisson.create(config);

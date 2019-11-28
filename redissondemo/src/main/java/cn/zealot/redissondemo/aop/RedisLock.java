@@ -13,7 +13,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface RedisLock {
+
     String value() default "defaultRedisLock";
 
-    int leaseTime() default 10;
+    int leaseTime() default 30;
+
 }

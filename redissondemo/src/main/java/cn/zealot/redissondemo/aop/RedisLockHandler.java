@@ -9,6 +9,8 @@ import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * All right Reserved, Designed By ZHANGSEN
  *
@@ -18,30 +20,32 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Slf4j
-public class RLockHandler {
+public class RedisLockHandler {
+
+    private final RedissonClient redissonClient;
 
     @Autowired
-    private RedissonClient redissonClient;
+    public RedisLockHandler(RedissonClient redissonClient) {
+        this.redissonClient = redissonClient;
+    }
 
     @Around("@annotation(redisLock)")
-    public void around(ProceedingJoinPoint joinPoint, RedisLock redisLock) {
-        //获取锁名称
+    public Object around(ProceedingJoinPoint joinPoint, RedisLock redisLock) throws Throwable {
+        Object ret;
         String lockName = redisLock.value();
-        //获取超时时间，默认10秒
         int leaseTime = redisLock.leaseTime();
         RLock rlock = redissonClient.getLock(lockName);
-        rlock.lock();
+        rlock.lock(leaseTime, TimeUnit.SECONDS);
         try {
             log.info("Lock [{}] succeed.", lockName);
-            joinPoint.proceed();
-        } catch (Throwable throwable) {
+            ret = joinPoint.proceed();
+        } catch (Throwable e) {
             log.error("Lock [{}] error!", lockName);
-            throwable.printStackTrace();
+            throw e;
         } finally {
-            //如果该线程还持有该锁，那么释放该锁。如果该线程不持有该锁，说明该线程的锁已到过期时间，自动释放锁
             rlock.unlock();
         }
         log.info("Unlock [{}] over.", lockName);
+        return ret;
     }
-
 }
