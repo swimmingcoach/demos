@@ -34,9 +34,7 @@ public class RedissonConfig {
         ClusterServersConfig cf = config.useClusterServers().setScanInterval(2000);
 
         String[] cNodes = clusterNodes.split(",");
-        for (String node : cNodes) {
-            cf.addNodeAddress("redis://" + node);
-        }
+        cf.addNodeAddress(cNodes);
 
         return Redisson.create(config);
     }
