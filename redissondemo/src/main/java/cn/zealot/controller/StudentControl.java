@@ -1,7 +1,7 @@
-package cn.zealot.redissondemo.controller;
+package cn.zealot.controller;
 
-import cn.zealot.pojo.Student;
-import cn.zealot.redissondemo.service.StudentService;
+import cn.zealot.Student;
+import cn.zealot.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;

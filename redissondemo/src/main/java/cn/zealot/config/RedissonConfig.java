@@ -1,4 +1,4 @@
-package cn.zealot.redissondemo.config;
+package cn.zealot.config;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;

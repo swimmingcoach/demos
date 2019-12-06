@@ -1,10 +1,8 @@
-package cn.zealot.redissondemo.mapper;
+package cn.zealot.mapper;
 
-import cn.zealot.pojo.Student;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import cn.zealot.Student;
+import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,6 +12,7 @@ import java.util.List;
  * @author : zhangsen
  * @date : 2019/11/18 16:20
  */
+@Repository
 public interface StudentMapper {
 
     @Select("select * from tb_student")

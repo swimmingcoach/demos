@@ -1,6 +1,6 @@
 package cn.zealot.springtransactionldemo.service;
 
-import cn.zealot.pojo.Student;
+import cn.zealot.Student;
 import cn.zealot.springtransactionldemo.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-import cn.zealot.pojo.Student;
+import cn.zealot.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +27,11 @@ public class LambdaDemoMain {
          * 基本语法:  (parameters) -> expression
          *    或者：(parameters) ->{ statements;
          **/
-//        List<cn.zealot.pojo.Student> __suzhous = filterStudent(list, (cn.zealot.pojo.Student student) -> {
+//        List<Student> __suzhous = filterStudent(list, (Student student) -> {
 //            String suzhou = "苏州";
 //            return suzhou.equals(student.getArea());
 //        });
-//        __suzhous.forEach((cn.zealot.pojo.Student student) -> {
+//        __suzhous.forEach((Student student) -> {
 //            System.out.println(student);
 //        });
 

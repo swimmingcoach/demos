@@ -1,4 +1,4 @@
-package cn.zealot.redissondemo.config;
+package cn.zealot.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

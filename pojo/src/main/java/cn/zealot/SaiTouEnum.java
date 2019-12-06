@@ -1,4 +1,4 @@
-package cn.zealot.pojo;
+package cn.zealot;
 
 /**
  * All right Reserved, Designed By ZHANGSEN

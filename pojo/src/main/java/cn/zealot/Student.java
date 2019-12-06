@@ -1,4 +1,4 @@
-package cn.zealot.pojo;
+package cn.zealot;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,6 +30,7 @@ public class Student implements Serializable {
         this.name = name;
         this.area = area;
         this.age = age;
+        this.createtime = new Date();
     }
 
     public static int compareByAge(Student s1, Student s2) {

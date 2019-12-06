@@ -1,4 +1,4 @@
-package cn.zealot.redissondemo.aop;
+package cn.zealot.aop;
 
 import java.lang.annotation.*;
 

@@ -1,6 +1,6 @@
 package cn.zealot.dao;
 
-import cn.zealot.pojo.Student;
+import cn.zealot.Student;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

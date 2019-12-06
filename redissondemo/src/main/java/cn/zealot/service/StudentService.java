@@ -1,8 +1,8 @@
-package cn.zealot.redissondemo.service;
+package cn.zealot.service;
 
-import cn.zealot.pojo.Student;
-import cn.zealot.redissondemo.aop.RedisLock;
-import cn.zealot.redissondemo.mapper.StudentMapper;
+import cn.zealot.Student;
+import cn.zealot.mapper.StudentMapper;
+import cn.zealot.aop.RedisLock;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;

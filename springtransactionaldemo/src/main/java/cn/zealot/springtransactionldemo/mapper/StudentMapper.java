@@ -1,6 +1,6 @@
 package cn.zealot.springtransactionldemo.mapper;
 
-import cn.zealot.pojo.Student;
+import cn.zealot.Student;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;

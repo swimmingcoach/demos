@@ -9,17 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>lambdaDemo</module>
-        <module>StreamDemo</module>
-        <module>FunctionalInterfacesDemo</module>
-        <module>方法引用</module>
-        <module>构造器引用</module>
         <module>pojo</module>
-        <module>OptionalDemo</module>
-        <module>ArrayListDemo</module>
         <module>SpringTransactionalDemo</module>
-        <module>mybatisDemo</module>
-        <module>PythonDemo</module>
+        <module>redissondemo</module>
     </modules>
 
     <build>
