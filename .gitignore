@@ -25,6 +25,7 @@ mvnw.cmd
 *.iws
 *.iml
 *.ipr
+.gitignore
 
 ### NetBeans ###
 /nbproject/private/
