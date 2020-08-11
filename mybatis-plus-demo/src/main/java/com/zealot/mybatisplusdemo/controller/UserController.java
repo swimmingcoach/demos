@@ -31,9 +31,9 @@ public class UserController {
         return userService.list();
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/get")
     @ResponseBody
-    public List<User> getAll() {
-        return userService.getAll();
+    public User get(Integer id) {
+        return userService.getById(id);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -24,12 +25,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private UserMapper userMapper;
 
     @Cacheable(value = "dictionary", keyGenerator = "baseCacheKeyGenerator")
-    public List<User> getAll() {
-        return userMapper.selectList(null);
+    public List<User> list() {
+        return userMapper.selectList(Wrappers.emptyWrapper());
     }
 
     @Cacheable(value = "dictionary", keyGenerator = "baseCacheKeyGenerator")
-    public List<User> list() {
-        return userMapper.selectList(Wrappers.emptyWrapper());
+    public User getById(Serializable id) {
+        return getBaseMapper().selectById(id);
     }
 }

@@ -15,7 +15,5 @@ import java.util.List;
 @Service
 public interface UserService extends IService<User> {
 
-    List<User> getAll();
-
     List<User> list();
 }
