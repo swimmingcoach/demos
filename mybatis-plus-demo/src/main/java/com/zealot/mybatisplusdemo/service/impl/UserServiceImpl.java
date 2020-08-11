@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zealot.mybatisplusdemo.mapper.UserMapper;
 import com.zealot.mybatisplusdemo.pojo.User;
 import com.zealot.mybatisplusdemo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Cacheable(value = "dictionary", keyGenerator = "baseCacheKeyGenerator")
