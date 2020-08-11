@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zealot.mybatisplusdemo.mapper.UserMapper;
 import com.zealot.mybatisplusdemo.pojo.User;
+import com.zealot.mybatisplusdemo.service.UserFeignClient;
 import com.zealot.mybatisplusdemo.service.UserService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private UserFeignClient userFeignClient;
 
     @Cacheable(value = "dictionary", keyGenerator = "baseCacheKeyGenerator")
     public List<User> list() {
@@ -32,5 +35,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Cacheable(value = "dictionary", keyGenerator = "baseCacheKeyGenerator")
     public User getById(Serializable id) {
         return getBaseMapper().selectById(id);
+    }
+
+    public List<User> listByFeign() {
+        return userFeignClient.list();
     }
 }

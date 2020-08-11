@@ -28,7 +28,20 @@ public class UserController {
     @GetMapping("/list")
     @ResponseBody
     public List<User> list() {
+        log.debug(">>>>>>>>>>>>>>>>>>>>>>");
+        try {
+            Thread.sleep(100000000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        log.debug("<<<<<<<<<<<<<<<<<<<<<<");
         return userService.list();
+    }
+
+    @GetMapping("/listByFeign")
+    @ResponseBody
+    public List<User> listByFeign() {
+        return userService.listByFeign();
     }
 
     @GetMapping("/get")
