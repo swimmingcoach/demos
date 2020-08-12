@@ -4,6 +4,7 @@ import com.zealot.mybatisplusdemo.pojo.User;
 import com.zealot.mybatisplusdemo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,7 @@ public class UserController {
 
     @GetMapping("/get")
     @ResponseBody
+    @Cacheable(value = "dictionary", keyGenerator = "baseCacheKeyGenerator")
     public User get(Integer id) {
         return userService.getById(id);
     }
