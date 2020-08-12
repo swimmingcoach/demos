@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @MapperScan("com.zealot.mybatisplusdemo.mapper")
-@EnableFeignClients
+@EnableFeignClients("com.zealot.mybatisplusdemo.feign")
 public class MybatisPlusDemoApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.zealot.mybatisplusdemo.service;
+package com.zealot.mybatisplusdemo.feign;
 
 import com.zealot.mybatisplusdemo.config.FeignConfigMore;
 import com.zealot.mybatisplusdemo.pojo.User;
