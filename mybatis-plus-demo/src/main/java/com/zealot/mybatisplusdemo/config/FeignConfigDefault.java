@@ -26,11 +26,11 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * @date : 2020/1/11 17:35
  */
 @Configuration
-public class FeignConfig {
+public class FeignConfigDefault {
 
     @Bean
     Logger.Level feignLoggerLevel() {
-        return Logger.Level.FULL;
+        return Logger.Level.BASIC;
     }
 
     @Bean
@@ -48,7 +48,7 @@ public class FeignConfig {
     public Retryer feignRetryer() {
         // ZhangSen 2020/8/11 17:26 重试（3-1=2）次，每次间隔100到1000随机毫秒
         // 链接超时不会重试，响应超时才会重试
-        return new Retryer.Default(100, SECONDS.toMillis(1), 3);
+        return new Retryer.Default(100, SECONDS.toMillis(1), 2);
     }
 
     public ObjectFactory<HttpMessageConverters> feignHttpMessageConverter() {

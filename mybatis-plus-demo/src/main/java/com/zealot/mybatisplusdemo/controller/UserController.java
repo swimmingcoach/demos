@@ -28,13 +28,13 @@ public class UserController {
     @GetMapping("/list")
     @ResponseBody
     public List<User> list() {
-        log.debug(">>>>>>>>>>>>>>>>>>>>>>");
+        log.debug(">>>>>>>>>>>开始>>>>>>>>>>>");
         try {
             Thread.sleep(100000000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        log.debug("<<<<<<<<<<<<<<<<<<<<<<");
+        log.debug("<<<<<<<<<<<结束<<<<<<<<<<<");
         return userService.list();
     }
 
