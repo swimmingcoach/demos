@@ -12,6 +12,7 @@
         <module>pojo</module>
         <module>SpringTransactionalDemo</module>
         <module>redissondemo</module>
+        <module>kafkaCientDemo</module>
     </modules>
 
     <build>

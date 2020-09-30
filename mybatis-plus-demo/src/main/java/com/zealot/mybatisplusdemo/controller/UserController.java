@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
 @Controller
 @RequestMapping("user")
 @Slf4j
+@ApiIgnore
 public class UserController {
 
     @Autowired
@@ -31,7 +33,7 @@ public class UserController {
     public List<User> list() {
         log.debug(">>>>>>>>>>>开始>>>>>>>>>>>");
         try {
-            Thread.sleep(100000000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -51,4 +53,5 @@ public class UserController {
     public User get(Integer id) {
         return userService.getById(id);
     }
+
 }
