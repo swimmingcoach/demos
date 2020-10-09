@@ -3,12 +3,18 @@ package com.zealot.mybatisplusdemo.controller;
 import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.*;
+import org.apache.kafka.common.acl.AccessControlEntry;
+import org.apache.kafka.common.acl.AclBinding;
+import org.apache.kafka.common.acl.AclOperation;
+import org.apache.kafka.common.acl.AclPermissionType;
+import org.apache.kafka.common.resource.PatternType;
+import org.apache.kafka.common.resource.ResourcePattern;
+import org.apache.kafka.common.resource.ResourceType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Collections;
@@ -40,36 +46,54 @@ public class KafkaTopicController {
         return result.names().get();
     }
 
-    @GetMapping("createTopics")
+    @PostMapping("createTopics")
     @ResponseBody
     @ApiOperation("创建主题")
-    public String createTopics() {
-        NewTopic newTopic = new NewTopic("topicName", 1, (short) 1);
+    public String createTopics(@ApiParam(value = "主题名称", required = true)
+                               @RequestParam String name,
+                               @ApiParam(value = "分区数", required = true)
+                               @RequestParam int numPartitions,
+                               @ApiParam(value = "副本数", required = true)
+                               @RequestParam short replicationFactor) {
+        NewTopic newTopic = new NewTopic(name, numPartitions, replicationFactor);
         CreateTopicsResult result = adminClient.createTopics(Collections.singleton(newTopic));
         return JSON.toJSONString(result);
     }
 
-    @GetMapping("deleteTopics")
+    @PostMapping("deleteTopics")
     @ResponseBody
     @ApiOperation("删除主题")
-    public String deleteTopics(List<String> list) {
+    public String deleteTopics(@ApiParam(value = "主题名称列表", required = true)
+                               @RequestParam List<String> list) {
         DeleteTopicsResult result = adminClient.deleteTopics(list);
         return JSON.toJSONString(result);
     }
 
-    @GetMapping("describeTopics")
+    @PostMapping("describeTopics")
     @ResponseBody
     @ApiOperation("查询主题详情")
-    public String describeTopics(List<String> list) {
+    public String describeTopics(@ApiParam(value = "主题名称列表", required = true)
+                                 @RequestParam List<String> list) {
         DescribeTopicsResult result = adminClient.describeTopics(list);
         return JSON.toJSONString(result);
     }
 
-    @GetMapping("describeCluster")
+    @PostMapping("describeCluster")
     @ResponseBody
     @ApiOperation("查询集群信息")
     public String describeCluster() {
         DescribeClusterResult result = adminClient.describeCluster();
+        return JSON.toJSONString(result);
+    }
+
+    @PostMapping("createAclsOptions")
+    @ResponseBody
+    @ApiOperation("配置ACL")
+    public String createAclsOptions() {
+        ResourcePattern pattern = new ResourcePattern(ResourceType.TOPIC, "test", PatternType.LITERAL);
+        AccessControlEntry entry = new AccessControlEntry("admin", "*", AclOperation.WRITE, AclPermissionType.ALLOW);
+        AclBinding aclBinding = new AclBinding(pattern, entry);
+        CreateAclsResult result = adminClient.createAcls(Collections.singleton(aclBinding));
         return JSON.toJSONString(result);
     }
 

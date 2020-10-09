@@ -26,6 +26,9 @@ public class KafkaConfig {
     private Properties getProps() {
         Properties props = new Properties();
         props.put("bootstrap.servers", "127.0.0.1:9092");
+        System.setProperty("java.security.auth.login.config", "/usr/local/kafka/config/kafka_client_jaas.conf");
+        props.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("sasl.mechanism", "PLAIN");
 /*    props.put("retries", 2); // 重试次数
     props.put("batch.size", 16384); // 批量发送大小
     props.put("buffer.memory", 33554432); // 缓存大小，根据本机内存大小配置
